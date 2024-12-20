@@ -1,43 +1,71 @@
-import React, { lazy } from 'react';
-import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import React from 'react';
+import { FileTextOutlined, FireOutlined, HomeOutlined } from '@ant-design/icons';
 import { MenuType } from '~/@types';
 
-const Home = lazy(() => import('~/pages/Home'));
 
 const Menus: MenuType[] = [
   {
-    path: '/',
+    routePath: 'index',
+    routeFile: 'pages/Home/index.tsx',
     title: 'Home',
     icon: <HomeOutlined />,
-    component: <Home />,
-    subMenu: [
-      {
-        path: '/home',
-        title: 'Home',
-        icon: <UnorderedListOutlined />,
-        component: <Home />,
-      },
-    ],
   },
   {
-    path: '/menu1',
-    title: 'Menu 1',
-    icon: <HomeOutlined />,
-    component: <Home />,
+    // use same layout
+    routePath: 'documentation',
+    layoutPath: 'pages/documentation/layout.tsx',
+    title: 'Documentation',
+    icon: <FileTextOutlined />,
     subMenu: [
       {
-        path: '/menu1/submenu1',
-        title: 'Submenu 1',
-        icon: <UnorderedListOutlined />,
-        component: <Home />,
+        routePath: 'documentation',
+        routeFile: 'pages/documentation/index.mdx',
       },
-    ],
+      {
+        routePath: 'documentation/about1',
+        routeFile: 'pages/documentation/about1.mdx',
+      },
+      {
+        routePath: 'documentation/about2',
+        routeFile: 'pages/documentation/about2.mdx',
+      },
+      {
+        routePath: 'documentation/tutorial1',
+        routeFile: 'pages/documentation/tutorial1.mdx',
+      },
+      {
+        routePath: 'documentation/tutorial2',
+        routeFile: 'pages/documentation/tutorial2.mdx',
+      }
+    ]
   },
   {
-    path: '/menu2',
-    title: 'Menu 2',
-    icon: <HomeOutlined />,
-    component: <Home />,
+    routePath: 'blog',
+    routeFile: 'pages/blog/index.tsx',
+    title: 'Blog',
+    icon: <FireOutlined />,
+    // subMenu: [
+    //   {
+    //     key: 'blog',
+    //     filePath: 'pages/blog/index.tsx',
+    //   },
+    //   {
+    //     key: 'documentation/about1',
+    //     filePath: 'pages/documentation/about1.mdx',
+    //   },
+    //   {
+    //     key: 'documentation/about2',
+    //     filePath: 'pages/documentation/about2.mdx',
+    //   },
+    //   {
+    //     key: 'documentation/tutorial1',
+    //     filePath: 'pages/documentation/tutorial1.mdx',
+    //   },
+    //   {
+    //     key: 'documentation/tutorial2',
+    //     filePath: 'pages/documentation/tutorial2.mdx',
+    //   }
+    // ]
   },
 ];
 

@@ -1,24 +1,26 @@
 /* eslint-disable no-undef */
-// import path, { dirname } from 'path';
+import path, { dirname } from 'path';
 import { defineConfig } from 'vite';
-// import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url';
 import { reactRouter } from '@react-router/dev/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import mdx from '@mdx-js/rollup';
 
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const isDev = mode === 'development';
 
-  // const __filename = fileURLToPath(import.meta.url);
-  // const __dirname = dirname(__filename);
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
 
   return {
-    // resolve: {
-    //   alias: {
-    //     '@': path.resolve(__dirname, './src'),
-    //   },
-    // },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        lodash: 'lodash-es',
+      },
+    },
     define: {
       'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV),
       'process.env.__DEV__': isDev,
@@ -43,8 +45,9 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
+      mdx(),
       reactRouter(), 
-      tsconfigPaths()
+      tsconfigPaths(),
     ],
   };
 });

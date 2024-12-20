@@ -1,17 +1,19 @@
 export interface MenuType {
-  path: string;
-  title: string;
-  icon: any;
-  component?: any;
+  routePath?: string; // react-router key
+  routeFile?: string; // react-router filePath
+  layoutPath?: string;
+  title?: string; // NavLink title
+  icon?: any; // NavLink icon
   noMenu?: boolean;
   hasPermission?: boolean;
   subMenu?: {
-    path: string;
-    title: string;
-    icon: any;
+    routePath: string; // react-router key
+    routeFile: string; // react-router filePath
+    path?: string;
+    title?: string;
+    icon?: any;
     ret?: boolean;
     redirect?: string;
-    component?: any;
     noMenu?: boolean;
     hasPermission?: boolean;
   }[];

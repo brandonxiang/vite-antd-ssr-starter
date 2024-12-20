@@ -1,7 +1,11 @@
 import React from 'react';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import Body from './layouts/Body';
-import './App.scss';
+import globalStyles from '~/style/global.scss?url';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: globalStyles },
+];
 
 const isBrowser = () => {
   return typeof window !== 'undefined' && window.document && window.document.createElement;
@@ -10,8 +14,9 @@ const isBrowser = () => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html>
       <head>
+        <title>reactpress</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />

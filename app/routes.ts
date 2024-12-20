@@ -1,10 +1,17 @@
-import { type RouteConfig, index, route, prefix } from '@react-router/dev/routes';
+import { index, layout, route } from '@react-router/dev/routes';
+import { getRoutes } from './router/config';
 
-export default [
-  index('pages/Home/index.tsx'),
-  ...prefix('menu1', [
-    // index('pages/Home/index.tsx'),
-    route('submenu1', 'pages/menu1/index.tsx'),
-  ]),
-  route('menu2', 'pages/menu2/index.tsx'),
-] satisfies RouteConfig;
+const res = getRoutes();
+console.log(JSON.stringify(res, null, 2));
+
+// const res = [
+//   index('pages/Home/index.tsx'),
+//   layout('pages/documentation/layout.tsx', [
+//     route('documentation', 'pages/documentation/index.mdx'),
+//     route('documentation/about', 'pages/documentation/about1.mdx'),
+//   ]),
+//   route('blog', 'pages/blog/index.tsx'),
+// ];
+
+
+export default res;
