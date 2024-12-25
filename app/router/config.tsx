@@ -1,7 +1,6 @@
 import menus from './menus';
 import { index, layout, route } from '@react-router/dev/routes';
 import { NavLink } from 'react-router';
-import React from 'react';
 import { compact } from 'lodash-es';
 
 export const getMenus = () => {
@@ -9,7 +8,10 @@ export const getMenus = () => {
 };
 
 export const getHeaderMenus = () => {
-  return menus.map((menu) => {
+  const res = menus.map((menu) => {
+    if(menu.noMenu) {
+      return null;
+    }
     const path = menu.routePath === 'index' ? '/' : '/' + menu.routePath;
     return {
       key: menu.routePath || '',
@@ -21,13 +23,12 @@ export const getHeaderMenus = () => {
       ),
     };
   });
+  return compact(res);
 };
 
 export const getRoutes = () => {
   const res = menus.map((menu) => {
-    if(menu.noMenu) {
-      return null;
-    }
+
 
     if (menu.layoutPath && menu.subMenu) {
       return layout(menu.layoutPath, menu.subMenu.map((item) => {

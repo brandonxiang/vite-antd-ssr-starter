@@ -6,7 +6,6 @@ import { ServerRouter } from 'react-router';
 import { isbot } from 'isbot';
 import type { RenderToPipeableStreamOptions } from 'react-dom/server';
 import { renderToPipeableStream } from 'react-dom/server';
-import React from 'react';
 import { StyleProvider, createCache, extractStyle } from '@ant-design/cssinjs';
 import { ServerStyleSheet } from 'styled-components';
 

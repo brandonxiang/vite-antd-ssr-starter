@@ -1,4 +1,3 @@
-import { index, layout, route } from '@react-router/dev/routes';
 import { getRoutes } from './router/config';
 
 const res = getRoutes();

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration, useNavigate, useRouteError } from 'react-router';
 import Body from './layouts/Body';
 import globalStyles from '~/style/global.scss?url';
+import { Button, Result } from 'antd';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStyles },
@@ -11,6 +12,11 @@ const isBrowser = () => {
   return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
+interface RouterError {
+  status?: number;
+  data?: string;
+  message?: string;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,10 +44,25 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
+  const error = useRouteError() as RouterError;
+  const navigate = useNavigate();
 
+  if (error.status === 404) {
+    return (
+      <Result
+        status="404"
+        title="404"
+        subTitle={`Sorry, something went wrong.(${error.data})`}
+        extra={<Button type="primary" onClick={() => navigate('/')}>Back Home</Button>}
+      />
+    );
+  }
   return (
-    <div>
-      <h1>Error</h1>
-    </div>
+    <Result
+      status="500"
+      title="500"
+      subTitle={`Sorry, something went wrong.(${error.data})`}
+      extra={<Button type="primary" onClick={() => navigate('/')}>Back Home</Button>}
+    />
   );
 }

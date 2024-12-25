@@ -1,4 +1,3 @@
-import React from 'react';
 import { FileTextOutlined, FireOutlined, HomeOutlined } from '@ant-design/icons';
 import { MenuType } from '~/@types';
 
@@ -44,29 +43,17 @@ const Menus: MenuType[] = [
     routeFile: 'pages/blog/index.tsx',
     title: 'Blog',
     icon: <FireOutlined />,
-    // subMenu: [
-    //   {
-    //     key: 'blog',
-    //     filePath: 'pages/blog/index.tsx',
-    //   },
-    //   {
-    //     key: 'documentation/about1',
-    //     filePath: 'pages/documentation/about1.mdx',
-    //   },
-    //   {
-    //     key: 'documentation/about2',
-    //     filePath: 'pages/documentation/about2.mdx',
-    //   },
-    //   {
-    //     key: 'documentation/tutorial1',
-    //     filePath: 'pages/documentation/tutorial1.mdx',
-    //   },
-    //   {
-    //     key: 'documentation/tutorial2',
-    //     filePath: 'pages/documentation/tutorial2.mdx',
-    //   }
-    // ]
   },
+  {
+    routePath: 'blog/release-1',
+    routeFile: 'pages/blog/blog-release-1.mdx',
+    noMenu: true,
+  },
+  {
+    routePath: 'blog/release-2',
+    routeFile: 'pages/blog/blog-release-2.mdx',
+    noMenu: true,
+  }
 ];
 
 export default Menus;
