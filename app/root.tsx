@@ -1,8 +1,9 @@
 import React from 'react';
-import { Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration, useNavigate, useRouteError } from 'react-router';
+import { isRouteErrorResponse, Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration} from 'react-router';
 import Body from './layouts/Body';
 import globalStyles from '~/style/global.scss?url';
 import { Button, Result } from 'antd';
+import type { Route } from './+types/root';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStyles },
@@ -43,26 +44,33 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary() {
-  const error = useRouteError() as RouterError;
-  const navigate = useNavigate();
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const _error = error as RouterError;
 
-  if (error.status === 404) {
-    return (
-      <Result
-        status="404"
-        title="404"
-        subTitle={`Sorry, something went wrong.(${error.data})`}
-        extra={<Button type="primary" onClick={() => navigate('/')}>Back Home</Button>}
-      />
-    );
+  let message = 'Oops!';
+  let details = 'An unexpected error occurred.';
+  // let stack: string | undefined;
+
+  if (isRouteErrorResponse(_error)) {
+    message = _error.status === 404 ? '404' : 'Error';
+    details =
+      _error.status === 404
+        ? 'The requested page could not be found.'
+        : _error.statusText || details;
+  } else if (import.meta.env.DEV && _error && _error instanceof Error) {
+    details = _error.message;
+    // stack = _error.stack;
   }
+
+
   return (
-    <Result
-      status="500"
-      title="500"
-      subTitle={`Sorry, something went wrong.(${error.data})`}
-      extra={<Button type="primary" onClick={() => navigate('/')}>Back Home</Button>}
-    />
+    <main>
+      <Result
+        status={_error!.status === 404 ? 404 : 500}
+        title={message}
+        subTitle={`Sorry, something went wrong.(${details})`}
+        extra={<Button type="primary" onClick={() => window.location.replace('/')}>Back Home</Button>}
+      />
+    </main>
   );
 }
