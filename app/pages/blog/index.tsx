@@ -7,7 +7,7 @@ import { NavLink } from 'react-router';
 const BLOG_CONFIG = [
   {
     href: '/blog/release-2',
-    title: '2024-12-26 new release for 1.0.1',
+    title: '2024-12-26 How to use Blog Mode',
     avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${2}`,
     description:
       'Blog 2 new release for 1.0.1.',

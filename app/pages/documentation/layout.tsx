@@ -11,32 +11,32 @@ const DOCUMENTATION_CONFIG: MenuProps['items'] = [
     }, 
     {
         key: 'tutorial',
-        label: 'tutorial',
+        label: 'Tutorial',
         type: 'group',
         children: [
             {
-                key: 'tutorial1',
-                label: <NavLink to={'/documentation/tutorial1'}>tutorial1</NavLink>,
+                key: 'How to use Documentation Mode',
+                label: <NavLink to={'/documentation/how-to-use-documentation-mode'}>How to use doc mode</NavLink>,
             },
             {
-                key: 'tutorial2',
-                label: <NavLink to={'/documentation/tutorial2'}>tutorial2</NavLink>,
+                key: 'Quick Start',
+                label: <NavLink to={'/documentation/quick-start'}>Quick Start</NavLink>,
             },
         ],
     },
     {
 
         key: 'about',
-        label: 'About me',
+        label: 'Future Plan',
         type: 'group',
         children: [
             {
-                key: 'about1',
-                label: <NavLink to={'/documentation/about1'}>About me</NavLink>,
+                key: 'Future Plan',
+                label: <NavLink to={'/documentation/future-plan'}>Future Plan</NavLink>,
             },
             {
-                key: 'about2',
-                label: <NavLink to={'/documentation/about2'}>About me1</NavLink>,
+                key: 'Known Issue',
+                label: <NavLink to={'/documentation/known-issue'}>Known Issue</NavLink>,
             },
         ],
 
@@ -51,7 +51,7 @@ export default function DocumentationLayout() {
 
     return (
         <Layout>
-            <Sider width={250} style={{ background: colorBgContainer, height: 'calc(100vh - 65px)', borderRight: '1px solid #e8e8e8' }}>
+            <Sider width={250} style={{ background: colorBgContainer, height: 'calc(100vh - 65px)', borderRight: '1px solid #e8e8e8', overflow: 'auto' }}>
                 <Menu
                     mode="inline"
                     defaultSelectedKeys={['index']}
@@ -59,7 +59,7 @@ export default function DocumentationLayout() {
                     items={DOCUMENTATION_CONFIG}
                 />
             </Sider>
-            <Content style={{ padding: 20, background: colorBgContainer }} className='markdown-body'>
+            <Content style={{ padding: 20,  height: 'calc(100vh - 65px)', background: colorBgContainer, overflow: 'auto' }} className='markdown-body'>
                 <Outlet />
             </Content>
         </Layout>

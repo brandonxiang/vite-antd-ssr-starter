@@ -21,20 +21,20 @@ const Menus: MenuType[] = [
         routeFile: 'pages/documentation/index.mdx',
       },
       {
-        routePath: 'documentation/about1',
-        routeFile: 'pages/documentation/about1.mdx',
+        routePath: 'documentation/how-to-use-documentation-mode',
+        routeFile: 'pages/documentation/how-to-use-documentation-mode.mdx',
       },
       {
-        routePath: 'documentation/about2',
-        routeFile: 'pages/documentation/about2.mdx',
+        routePath: 'documentation/quick-start',
+        routeFile: 'pages/documentation/quick-start.mdx',
       },
       {
-        routePath: 'documentation/tutorial1',
-        routeFile: 'pages/documentation/tutorial1.mdx',
+        routePath: 'documentation/future-plan',
+        routeFile: 'pages/documentation/future-plan.mdx',
       },
       {
-        routePath: 'documentation/tutorial2',
-        routeFile: 'pages/documentation/tutorial2.mdx',
+        routePath: 'documentation/known-issue',
+        routeFile: 'pages/documentation/known-issue.mdx',
       }
     ]
   },
@@ -46,7 +46,7 @@ const Menus: MenuType[] = [
   },
   {
    // use same layout
-   layoutPath: 'pages/blog/layout.tsx', 
+   layoutPath: 'pages/blog/detail-layout.tsx', 
    noMenu: true,
    subMenu: [
     {

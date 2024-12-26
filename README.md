@@ -4,13 +4,13 @@
   </a>
 </p>
 
-# Vite Antd Starter 😄
+# Full-Stack Starter 😄
 
 ## Why do you use this template
 
 This template is a simplest solution to start up an new SPA.
 
-## What is the key web framework for this template
+## What is the key web components for this template
 
 - [React](https://react.dev/)
 - [React Router](https://reactrouter.com/en/main)
@@ -23,17 +23,14 @@ This template is a simplest solution to start up an new SPA.
 Please use [degit](https://github.com/Rich-Harris/degit) to download template
 
 ```bash
-#
 mkdir your-project-name
 cd your-project-name
-npx degit brandonxiang/vite-antd-starter#ssr
+npx degit brandonxiang/vite-antd-ssr-starter
 
 # or
 
-npx degit brandonxiang/vite-antd-starter#ssr your-project-name
+npx degit brandonxiang/vite-antd-ssr-starter your-project-name
 ```
-
-## How to Develop
 
 ```shell
 pnpm i
@@ -41,19 +38,18 @@ pnpm i
 
 ```shell
 pnpm run dev
-
-# http://localhost:3000/
 ```
 
-## How to Build
-
 ```shell
-# live
 pnpm run build
 ```
 
-## Project Management
+## Relevant Links
 
-- [husky](https://typicode.github.io/husky/)
-- [lint-staged](https://github.com/lint-staged/lint-staged)
-- [eslint 9](https://eslint.org/)
+- [vite-antd-starter](https://github.com/brandonxiang/vite-antd-starter)
+- [vite-antd-ssr-starter](https://github.com/brandonxiang/vite-antd-ssr-starter)
+- [vite-antd-mobile-starter](https://github.com/brandonxiang/vite-antd-mobile-starter)
+- [fastify-starter](https://github.com/brandonxiang/fastify-starter)
+- [ts-lib-starter](https://github.com/brandonxiang/ts-lib-starter)
+- [svelteup-starter](https://github.com/brandonxiang/svelteup-starter)
+- [reveal-svelte-starter](https://github.com/brandonxiang/reveal-svelte-starter)
