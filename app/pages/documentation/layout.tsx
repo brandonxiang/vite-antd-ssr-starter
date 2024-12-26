@@ -1,41 +1,42 @@
 import { Outlet } from 'react-router';
 import { Layout, Menu, MenuProps, theme } from 'antd';
+import { NavLink } from 'react-router';
 
 const { Sider, Content } = Layout;
 
-const items2: MenuProps['items'] = [
+const DOCUMENTATION_CONFIG: MenuProps['items'] = [
     {
         key: 'index',
-        label: 'Introduction',
+        label: <NavLink to={'/documentation'}>Introduction</NavLink>,
     }, 
     {
         key: 'tutorial',
-        label: '教程',
+        label: 'tutorial',
         type: 'group',
         children: [
             {
                 key: 'tutorial1',
-                label: '教程1',
+                label: <NavLink to={'/documentation/tutorial1'}>tutorial1</NavLink>,
             },
             {
                 key: 'tutorial2',
-                label: '教程2',
+                label: <NavLink to={'/documentation/tutorial2'}>tutorial2</NavLink>,
             },
         ],
     },
     {
 
         key: 'about',
-        label: '关于我',
+        label: 'About me',
         type: 'group',
         children: [
             {
                 key: 'about1',
-                label: 'About me',
+                label: <NavLink to={'/documentation/about1'}>About me</NavLink>,
             },
             {
                 key: 'about2',
-                label: 'About me1',
+                label: <NavLink to={'/documentation/about2'}>About me1</NavLink>,
             },
         ],
 
@@ -55,10 +56,10 @@ export default function DocumentationLayout() {
                     mode="inline"
                     defaultSelectedKeys={['index']}
                     style={{ height: '100%', borderRight: 0, padding: 5, paddingTop: 20 }}
-                    items={items2}
+                    items={DOCUMENTATION_CONFIG}
                 />
             </Sider>
-            <Content style={{ padding: 20, background: colorBgContainer }}>
+            <Content style={{ padding: 20, background: colorBgContainer }} className='markdown-body'>
                 <Outlet />
             </Content>
         </Layout>

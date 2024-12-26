@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-// import styles from './index.module.scss';
-import { getHeaderMenus } from '~/router/config';
+import { getHeaderMenus } from '~/router';
 const { Content, Header } = Layout;
 
 export default function Body({ children }: { children: React.ReactNode }) {

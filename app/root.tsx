@@ -2,11 +2,13 @@ import React from 'react';
 import { isRouteErrorResponse, Links, LinksFunction, Meta, Outlet, Scripts, ScrollRestoration} from 'react-router';
 import Body from './layouts/Body';
 import globalStyles from '~/style/global.scss?url';
+import markdownStyles from 'github-markdown-css/github-markdown.css?url';
 import { Button, Result } from 'antd';
 import type { Route } from './+types/root';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStyles },
+  { rel: 'stylesheet', href: markdownStyles },
 ];
 
 const isBrowser = () => {
@@ -23,7 +25,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <head>
-        <title>reactpress</title>
+        <title>ReactPress</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />

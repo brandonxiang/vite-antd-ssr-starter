@@ -2,16 +2,35 @@
 import React from 'react';
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
 import { Avatar, List, Space } from 'antd';
+import { NavLink } from 'react-router';
 
-const data = Array.from({ length: 2 }).map((_, i) => ({
-  href: 'https://ant.design',
-  title: `ant design part ${i}`,
-  avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${i}`,
-  description:
-    'Blog.',
-  content:
-    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-}));
+const BLOG_CONFIG = [
+  {
+    href: '/blog/release-2',
+    title: '2024-12-26 new release for 1.0.1',
+    avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${2}`,
+    description:
+      'Blog 2 new release for 1.0.1.',
+    content:
+      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+    star: '156',
+    like: '90',
+    message: '2'
+  },
+  {
+    href: '/blog/release-1',
+    title: '2024-12-25 new release for 1.0.0',
+    avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${1}`,
+    description:
+      'Blog 1 new release for 1.0.0.',
+    content:
+      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+    star: '120',
+    like: '180',
+    message: '2'
+  }
+  
+];
 
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
@@ -21,18 +40,18 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 );
 
 const App: React.FC = () => (
-  <div style={{ maxWidth: 800, margin: 'auto', backgroundColor: '#fff', borderRadius: 4, padding: 10, marginTop: 20, marginBottom: 20 }}>
+  <div className="blog-content">
     <List
       itemLayout="vertical"
       size="large"
-      dataSource={data}
+      dataSource={BLOG_CONFIG}
       renderItem={(item) => (
         <List.Item
           key={item.title}
           actions={[
-            <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-            <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-            <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+            <IconText icon={StarOutlined} text={item.star} key="list-vertical-star-o" />,
+            <IconText icon={LikeOutlined} text={item.like} key="list-vertical-like-o" />,
+            <IconText icon={MessageOutlined} text={item.message} key="list-vertical-message" />,
           ]}
           extra={
             <img
@@ -44,7 +63,7 @@ const App: React.FC = () => (
         >
           <List.Item.Meta
             avatar={<Avatar src={item.avatar} />}
-            title={<a href={item.href}>{item.title}</a>}
+            title={<NavLink to={item.href}>{item.title}</NavLink>}
             description={item.description}
           />
           {item.content}

@@ -5,7 +5,7 @@ import { MenuType } from '~/@types';
 const Menus: MenuType[] = [
   {
     routePath: 'index',
-    routeFile: 'pages/Home/index.tsx',
+    routeFile: 'pages/homepage/index.tsx',
     title: 'Home',
     icon: <HomeOutlined />,
   },
@@ -45,15 +45,23 @@ const Menus: MenuType[] = [
     icon: <FireOutlined />,
   },
   {
-    routePath: 'blog/release-1',
-    routeFile: 'pages/blog/blog-release-1.mdx',
-    noMenu: true,
-  },
-  {
-    routePath: 'blog/release-2',
-    routeFile: 'pages/blog/blog-release-2.mdx',
-    noMenu: true,
+   // use same layout
+   layoutPath: 'pages/blog/layout.tsx', 
+   noMenu: true,
+   subMenu: [
+    {
+      routePath: 'blog/release-1',
+      routeFile: 'pages/blog/blog-release-1.mdx',
+      noMenu: true,
+    },
+    {
+      routePath: 'blog/release-2',
+      routeFile: 'pages/blog/blog-release-2.mdx',
+      noMenu: true,
+    }
+   ]
   }
+  
 ];
 
 export default Menus;
